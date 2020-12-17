@@ -27,7 +27,7 @@ variable "subnet_b" {
 
 variable "kms_alias_name" {
   description = "KMS alias name to use"
-  default = "alias/efs"
+  default     = "alias/efs"
 }
 
 variable "tags" {
@@ -37,12 +37,12 @@ variable "tags" {
 }
 
 variable "security_group_subnet_a" {
-  type = string 
+  type        = string
   description = "Security group to assign to mount point in subnet a"
 }
 
 variable "security_group_subnet_b" {
-  type = string
+  type        = string
   description = "Security group to assign to mount point in subnet a"
 }
 
