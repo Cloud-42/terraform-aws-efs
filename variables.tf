@@ -5,10 +5,10 @@ variable "vpc_id" {}
 
 variable "environment" {}
 
-variable "efs_encrypted" {
-  type        = bool
-  description = "Encrypt the EFS share?"
-  default     = true
+variable "deletion_window_in_days" {
+  type        = number
+  description = "Duration in days after which the key is deleted after destruction of the resource"
+  default     = 30
 }
 
 variable "performance_mode" {

@@ -4,7 +4,7 @@
 resource "aws_efs_file_system" "this" {
   encrypted        = true
   performance_mode = var.performance_mode
-  kms_key_id       = aws_kms_key.this.arn : null
+  kms_key_id       = aws_kms_key.this.arn
 
   tags = var.tags
 }

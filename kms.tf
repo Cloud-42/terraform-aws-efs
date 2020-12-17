@@ -3,12 +3,17 @@
 # -------------------------------------------------------
 resource "aws_kms_key" "this" {
   description             = "This key is used to encrypt EFS in ${var.environment}"
-  deletion_window_in_days = 30
+  deletion_window_in_days = var.deletion_window_in_days
+
+  lifecycle {
+    ignore_changes = [
+      policy
+    ]
+  }
 }
 
 # Alias
 resource "aws_kms_alias" "this" {
   name          = var.kms_alias_name
-  target_key_id = aws_kms_key.this[count.index].key_id
+  target_key_id = aws_kms_key.this.key_id
 }
-
