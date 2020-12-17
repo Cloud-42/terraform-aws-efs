@@ -6,7 +6,7 @@ variable "vpc_id" {}
 variable "environment" {}
 
 variable "efs_encrypted" {
-  type = bool
+  type        = bool
   description = "Encrypt the EFS share?"
   default     = true
 }
@@ -17,10 +17,12 @@ variable "performance_mode" {
 }
 
 variable "subnet_a" {
+  type        = string
   description = "1st subnet id into which EFS is deployed"
 }
 
 variable "subnet_b" {
+  type        = string
   description = "2nd subnet id into which EFS is deployed"
 }
 
