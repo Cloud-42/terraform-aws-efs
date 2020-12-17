@@ -1,8 +1,6 @@
 # ---------------------------
 # EFS Vars
 # ---------------------------
-variable "orchestration" {}
-
 variable "vpc_id" {}
 
 variable "environment" {}
