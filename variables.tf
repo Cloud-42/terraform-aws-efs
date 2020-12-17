@@ -1,26 +1,15 @@
 # ---------------------------
 # EFS Vars
 # ---------------------------
-variable "orchestration" {
-}
+variable "orchestration" {}
 
-variable "vpc_id" {
-}
+variable "vpc_id" {}
 
-variable "environment" {
-}
-
-variable "contact" {
-}
+variable "environment" {}
 
 variable "efs_encrypted" {
-  description = "Encrypt the EFS share"
+  description = "Encrypt the EFS share?"
   default     = "true"
-}
-
-variable "build_ref" {
-  description = "Build reference to allow for unique names to be generated"
-  default     = null
 }
 
 variable "performance_mode" {
@@ -28,19 +17,21 @@ variable "performance_mode" {
   default     = "generalPurpose"
 }
 
-variable "private_subnet_a" {
-  description = "1st private subnet id"
+variable "subnet_a" {
+  description = "1st subnet id into which EFS is deployed"
 }
 
-variable "private_subnet_b" {
-  description = "2nd private subnet id"
+variable "subnet_b" {
+  description = "2nd subnet id into which EFS is deployed"
 }
 
-variable "subnet_a_ip_range" {
-  description = "1st subnet IP range, grants access to EFS mount point a"
+variable "kms_alias_name" {
+  description = "KMS alias name to use"
+  default = "alias/efs"
 }
 
-variable "subnet_b_ip_range" {
-  description = "2nd subnet IP range, grants access to EFS mount point b"
+variable "tags" {
+  description = "Tags map"
+  type        = map(string)
+  default     = {}
 }
-
