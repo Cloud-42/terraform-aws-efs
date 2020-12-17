@@ -1,7 +1,10 @@
 # ---------------------------
 # EFS Vars
 # ---------------------------
-variable "vpc_id" {}
+variable "vpc_id" {
+  type = string
+  description = "VPC id"
+}
 
 variable "environment" {}
 
