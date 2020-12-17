@@ -38,12 +38,12 @@ variable "tags" {
 }
 
 variable "security_group_subnet_a" {
-  type        = string
+  type        = list(string)
   description = "Security group to assign to mount point in subnet a"
 }
 
 variable "security_group_subnet_b" {
-  type        = string
+  type        = list(string)
   description = "Security group to assign to mount point in subnet a"
 }
 
