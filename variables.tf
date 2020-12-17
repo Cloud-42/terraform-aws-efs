@@ -6,8 +6,9 @@ variable "vpc_id" {}
 variable "environment" {}
 
 variable "efs_encrypted" {
+  type = bool
   description = "Encrypt the EFS share?"
-  default     = "true"
+  default     = true
 }
 
 variable "performance_mode" {
