@@ -10,7 +10,7 @@ resource "aws_kms_key" "this" {
 # Alias
 resource "aws_kms_alias" "this" {
   count         = var.efs_encrypted == true ? 1 : 0
-  name          = "alias/efs-${var.environment}-${var.build_ref}"
+  name          = var.kms_alias_name
   target_key_id = aws_kms_key.this[count.index].key_id
 }
 
