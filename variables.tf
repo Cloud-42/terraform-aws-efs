@@ -2,11 +2,14 @@
 # EFS Vars
 # ---------------------------
 variable "vpc_id" {
-  type = string
+  type        = string
   description = "VPC id"
 }
 
-variable "environment" {}
+variable "environment" {
+  type        = string
+  description = "Environment id. UAT, TEST, PRD, etc"
+}
 
 variable "deletion_window_in_days" {
   type        = number
