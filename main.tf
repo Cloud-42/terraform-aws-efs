@@ -2,39 +2,28 @@
 # EFS FileSystem
 # --------------------------
 resource "aws_efs_file_system" "this" {
-  depends_on = [
-      aws_kms_key.efskey,
-      aws_security_group.private_subnet_a,
-      aws_security_group.private_subnet_b
-  ]
-
-  encrypted        = var.efs_encrypted
+  encrypted        = true
   performance_mode = var.performance_mode
-  kms_key_id       = aws_kms_key.efskey.arn
+  kms_key_id       = aws_kms_key.this.arn
 
-  tags = {
-    Name            = "${var.environment}_${var.build_ref}_efs"
-    "Environment"   = var.environment
-    "Orchestration" = var.orchestration
-  }
+  tags = var.tags
 }
 
 # --------------------------
 # Mount points
 # --------------------------
-resource "aws_efs_mount_target" "private_subnet_a" {
+resource "aws_efs_mount_target" "subnet_a" {
   depends_on      = [aws_efs_file_system.this]
-  count           = var.private_subnet_a != "" ? 1 : 0
+  count           = var.subnet_a != "" ? 1 : 0
   file_system_id  = aws_efs_file_system.this.id
-  security_groups = [aws_security_group.private_subnet_a[0].id]
-  subnet_id       = var.private_subnet_a
+  security_groups = var.security_group_subnet_a
+  subnet_id       = var.subnet_a
 }
 
-resource "aws_efs_mount_target" "private_subnet_b" {
+resource "aws_efs_mount_target" "subnet_b" {
   depends_on      = [aws_efs_file_system.this]
-  count           = var.private_subnet_b != "" ? 1 : 0
+  count           = var.subnet_b != "" ? 1 : 0
   file_system_id  = aws_efs_file_system.this.id
-  security_groups = [aws_security_group.private_subnet_b[0].id]
-  subnet_id       = var.private_subnet_b
+  security_groups = var.security_group_subnet_a
+  subnet_id       = var.subnet_b
 }
-

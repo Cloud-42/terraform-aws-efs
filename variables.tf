@@ -1,26 +1,20 @@
 # ---------------------------
 # EFS Vars
 # ---------------------------
-variable "orchestration" {
-}
-
 variable "vpc_id" {
+  type        = string
+  description = "VPC id"
 }
 
 variable "environment" {
+  type        = string
+  description = "Environment id. UAT, TEST, PRD, etc"
 }
 
-variable "contact" {
-}
-
-variable "efs_encrypted" {
-  description = "Encrypt the EFS share"
-  default     = "true"
-}
-
-variable "build_ref" {
-  description = "Build reference to allow for unique names to be generated"
-  default     = null
+variable "deletion_window_in_days" {
+  type        = number
+  description = "Duration in days after which the key is deleted after destruction of the resource"
+  default     = 30
 }
 
 variable "performance_mode" {
@@ -28,19 +22,34 @@ variable "performance_mode" {
   default     = "generalPurpose"
 }
 
-variable "private_subnet_a" {
-  description = "1st private subnet id"
+variable "subnet_a" {
+  type        = string
+  description = "1st subnet id into which EFS is deployed"
 }
 
-variable "private_subnet_b" {
-  description = "2nd private subnet id"
+variable "subnet_b" {
+  type        = string
+  description = "2nd subnet id into which EFS is deployed"
 }
 
-variable "subnet_a_ip_range" {
-  description = "1st subnet IP range, grants access to EFS mount point a"
+variable "kms_alias_name" {
+  description = "KMS alias name to use"
+  default     = "alias/efs"
 }
 
-variable "subnet_b_ip_range" {
-  description = "2nd subnet IP range, grants access to EFS mount point b"
+variable "tags" {
+  description = "Tags map"
+  type        = map(string)
+  default     = {}
+}
+
+variable "security_group_subnet_a" {
+  type        = list(string)
+  description = "Security group to assign to mount point in subnet a"
+}
+
+variable "security_group_subnet_b" {
+  type        = list(string)
+  description = "Security group to assign to mount point in subnet a"
 }
 
