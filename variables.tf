@@ -35,3 +35,14 @@ variable "tags" {
   type        = map(string)
   default     = {}
 }
+
+variable "security_group_subnet_a" {
+  type = string 
+  description = "Security group to assign to mount point in subnet a"
+}
+
+variable "security_group_subnet_b" {
+  type = string
+  description = "Security group to assign to mount point in subnet a"
+}
+
