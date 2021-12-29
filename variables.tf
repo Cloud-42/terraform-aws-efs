@@ -1,6 +1,3 @@
-# ---------------------------
-# EFS Vars
-# ---------------------------
 variable "vpc_id" {
   type        = string
   description = "VPC id"
@@ -15,6 +12,17 @@ variable "deletion_window_in_days" {
   type        = number
   description = "Duration in days after which the key is deleted after destruction of the resource"
   default     = 30
+}
+
+variable "enable_key_rotation" {
+  type        = bool
+  description = "Whether or not automated key rotation is enabled"
+  default     = true
+}
+variable "policy" {
+type        = string
+  description = "JSON document defining KMS policy, must be valid"
+  default     = ""
 }
 
 variable "performance_mode" {
