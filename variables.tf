@@ -19,6 +19,7 @@ variable "enable_key_rotation" {
   description = "Whether or not automated key rotation is enabled"
   default     = true
 }
+
 variable "policy" {
   type        = string
   description = "JSON document defining KMS policy, must be valid"
@@ -34,6 +35,7 @@ variable "subnet_ids" {
   type        = list(string)
   description = "Subnet ids into which EFS is deployed"
 }
+
 variable "kms_alias_name" {
   description = "KMS alias name to use"
   default     = "alias/efs"
