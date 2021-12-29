@@ -20,10 +20,6 @@
 |------|---------|
 | <a name="provider_aws"></a> [aws](#provider\_aws) | n/a |
 
-## Modules
-
-No modules.
-
 ## Resources
 
 | Name | Type |
