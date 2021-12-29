@@ -30,16 +30,10 @@ variable "performance_mode" {
   default     = "generalPurpose"
 }
 
-variable "subnet_a" {
-  type        = string
-  description = "1st subnet id into which EFS is deployed"
+variable "subnet_ids" {
+  type        = list(string)
+  description = "Subnet ids into which EFS is deployed"
 }
-
-variable "subnet_b" {
-  type        = string
-  description = "2nd subnet id into which EFS is deployed"
-}
-
 variable "kms_alias_name" {
   description = "KMS alias name to use"
   default     = "alias/efs"
@@ -51,13 +45,7 @@ variable "tags" {
   default     = {}
 }
 
-variable "security_group_subnet_a" {
-  type        = list(string)
-  description = "Security group to assign to mount point in subnet a"
+variable "security_group_id" {
+  type        = string
+  description = "Security group to assign to the mount point(s)"
 }
-
-variable "security_group_subnet_b" {
-  type        = list(string)
-  description = "Security group to assign to mount point in subnet a"
-}
-
