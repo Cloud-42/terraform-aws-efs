@@ -10,3 +10,7 @@ output "efs_number_of_mount_targets" {
   description = "number of mount targets"
   value       = aws_efs_file_system.this.number_of_mount_targets
 }
+output "efs_id" {
+  description = "EFS id, e.g. fs-ccf56dsg"
+  value       = aws_efs_file_system.this.id
+}
