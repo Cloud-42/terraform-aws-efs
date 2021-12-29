@@ -20,7 +20,7 @@ variable "enable_key_rotation" {
   default     = true
 }
 variable "policy" {
-type        = string
+  type        = string
   description = "JSON document defining KMS policy, must be valid"
   default     = ""
 }
